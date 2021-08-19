@@ -26,7 +26,7 @@ func __add_visible_animation(animation: Animation, shown_nodes: Array, hidden_no
 	for node in hidden_nodes:
 		var _pos = __add_value_track(animation, node, "visible", false)
 	
-func _enter_tree():
+func _ready():
 	for sprite in Character_Globals.SPRITE_METADATA.keys():
 		var sprite_data = Character_Globals.SPRITE_METADATA[sprite]
 		var node = get_node(PREFIX_PATH + sprite)

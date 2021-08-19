@@ -6,11 +6,15 @@ const FRICTION = ACCELERATION
 
 var velocity = Vector2.ZERO
 
+signal collided(collision)
+
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 
+func _init():
+	Character_Globals.CharacterNode = self
+
 func _ready():
-	self.position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2)
 	for sprite in Character_Globals.SPRITE_METADATA.keys():
 		var sprite_data = Character_Globals.SPRITE_METADATA[sprite]
 		get_node(sprite).texture = load(sprite_data["res"])
@@ -32,3 +36,8 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	velocity = move_and_slide(velocity)
+
+	for i in self.get_slide_count():
+		var collision = self.get_slide_collision(i)
+		if collision:
+			self.emit_signal("collided", collision)

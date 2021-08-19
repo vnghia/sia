@@ -16,9 +16,12 @@ run/main_scene="res://World/World.tscn"
 [autoload]
 
 Character_Globals="*res://Character/Globals.gd"
+World_Globals="*res://World/Globals.gd"
 
 [display]
 
+window/size/width=480
+window/size/height=270
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
