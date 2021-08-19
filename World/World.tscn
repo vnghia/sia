@@ -15,5 +15,3 @@ editor_draw_drag_margin = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Character"]
 remote_path = NodePath("../../Camera")
-
-[node name="Cafe" type="Node2D" parent="."]
