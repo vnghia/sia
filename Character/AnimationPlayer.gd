@@ -10,18 +10,21 @@ func __add_frame_track(animation: Animation, node: Node, length: float, start: i
 		animation.track_insert_key(pos, i * length/step, start + i)
 	return pos
 
-func __add_visible_track(animation: Animation, node: Node, visible: bool):
+func __add_value_track_string(animation: Animation, node: String, key: String, value):
 	var pos = animation.add_track(Animation.TYPE_VALUE)
-	animation.track_set_path(pos, String(node.get_path()) + ":visible")
-	animation.track_insert_key(pos, 0, visible)
-	animation.track_insert_key(pos, animation.length, visible)
+	animation.track_set_path(pos, node + ":" + key)
+	animation.track_insert_key(pos, 0, value)
+	animation.track_insert_key(pos, animation.length, value)
 	return pos
+
+func __add_value_track(animation: Animation, node: Node, key: String, value):
+	return self.__add_value_track_string(animation, String(node.get_path()), key, value)
 
 func __add_visible_animation(animation: Animation, shown_nodes: Array, hidden_nodes: Array):
 	for node in shown_nodes:
-		var _pos = __add_visible_track(animation, node, true)
+		var _pos = __add_value_track(animation, node, "visible", true)
 	for node in hidden_nodes:
-		var _pos = __add_visible_track(animation, node, false)
+		var _pos = __add_value_track(animation, node, "visible", false)
 	
 func _enter_tree():
 	for sprite in Character_Globals.SPRITE_METADATA.keys():
@@ -46,3 +49,11 @@ func _enter_tree():
 			for shown_sprite in movement_data["show"]:
 				shown_nodes.append(get_node(PREFIX_PATH + shown_sprite))
 			self.__add_visible_animation(animation, [node], hidden_nodes)
+
+			var other_animations = movement_data["other"]
+			for other_node in other_animations.keys():
+				var other_node_data = other_animations[other_node]
+				var other_node_instance = get_node(PREFIX_PATH + other_node)
+
+				for other_key in other_node_data.keys():
+					var _pos = self.__add_value_track(animation, other_node_instance, other_key, other_node_data[other_key])
