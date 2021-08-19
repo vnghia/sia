@@ -23,9 +23,7 @@ func _on_collided_change_scene(collision: KinematicCollision2D, direction: Vecto
 	var tile_pos = collision.collider.world_to_map(collision.position)
 	if direction.y < 0:
 		tile_pos -= collision.normal
-	var tile_id = collision.collider.get_cellv(tile_pos)
-	var tile_name = collision.collider.tile_set.tile_get_name(tile_id)
-	var to_scene_data = current_collider.get(tile_name)
+	var to_scene_data = current_collider.get(tile_pos)
 	if ! to_scene_data:
 		return false
 	

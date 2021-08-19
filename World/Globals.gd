@@ -6,7 +6,7 @@ var list_scenes = {
 		"instance": null,
 		"door": {
 			"Welcome/Entry": {
-				"Entryway_Office": {
+				Vector2(1, 0): {
 					"to": "OfficeHall",
 				},
 			}
@@ -17,7 +17,7 @@ var list_scenes = {
 		"instance": null,
 		"door": {
 			"OfficeHall/Exit": {
-				"Exit": {
+				Vector2(8, 6): {
 					"to": "Welcome",
 				},
 			}
