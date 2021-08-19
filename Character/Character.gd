@@ -6,7 +6,7 @@ const FRICTION = ACCELERATION
 
 var velocity = Vector2.ZERO
 
-signal collided(collision)
+signal collided(collision, direction)
 
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
@@ -40,4 +40,4 @@ func _physics_process(delta):
 	for i in self.get_slide_count():
 		var collision = self.get_slide_collision(i)
 		if collision:
-			self.emit_signal("collided", collision)
+			self.emit_signal("collided", collision, input_vector)

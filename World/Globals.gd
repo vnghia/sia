@@ -8,7 +8,6 @@ var list_scenes = {
 			"Welcome/Entry": {
 				"Entryway_Office": {
 					"to": "OfficeHall",
-					"normal": true
 				},
 			}
 		}
@@ -20,7 +19,6 @@ var list_scenes = {
 			"OfficeHall/Exit": {
 				"Exit": {
 					"to": "Welcome",
-					"normal": false
 				},
 			}
 		}

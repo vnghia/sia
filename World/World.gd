@@ -8,7 +8,9 @@ func _ready():
 	self.add_child(scenes["Welcome"]["instance"], true)
 	World_Globals.current_scene = "Welcome"
 
-func _on_collided_change_scene(collision: KinematicCollision2D):
+func _on_collided_change_scene(collision: KinematicCollision2D, direction: Vector2):
+	if direction == Vector2.ZERO:
+		return false
 	var scenes = World_Globals.list_scenes
 	var current_scene = scenes[World_Globals.current_scene]
 	var current_collider = null
@@ -19,19 +21,15 @@ func _on_collided_change_scene(collision: KinematicCollision2D):
 		return false
 
 	var tile_pos = collision.collider.world_to_map(collision.position)
-	var to_scene_name = null
-	for door in current_collider.keys():
-		var door_data = current_collider[door]
-		if door_data["normal"]:
-			tile_pos -= collision.normal
-		var tile_id = collision.collider.get_cellv(tile_pos)
-		var tile_name = collision.collider.tile_set.tile_get_name(tile_id)
-		if tile_name == door:
-			to_scene_name = door_data["to"]
-			break
-	if ! to_scene_name:
+	if direction.y < 0:
+		tile_pos -= collision.normal
+	var tile_id = collision.collider.get_cellv(tile_pos)
+	var tile_name = collision.collider.tile_set.tile_get_name(tile_id)
+	var to_scene_data = current_collider.get(tile_name)
+	if ! to_scene_data:
 		return false
 	
+	var to_scene_name = to_scene_data["to"]
 	self.remove_child(current_scene["instance"])
 	var to_scene = scenes[to_scene_name]
 	if to_scene["instance"] == null:
@@ -40,6 +38,5 @@ func _on_collided_change_scene(collision: KinematicCollision2D):
 	World_Globals.current_scene = to_scene_name
 	return true
 
-
-func _on_Character_collided(collision):
-	var _changed = self._on_collided_change_scene(collision)
+func _on_Character_collided(collision: KinematicCollision2D, direction: Vector2):
+	var _changed = self._on_collided_change_scene(collision, direction)
