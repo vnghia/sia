@@ -27,3 +27,5 @@ collision_mask = 3
 [node name="Shape" type="CollisionShape2D" parent="Interaction" index="0"]
 position = Vector2( 0.00513649, 12.8784 )
 shape = SubResource( 2 )
+
+[node name="Dialog" type="RemoteTransform2D" parent="." index="7"]

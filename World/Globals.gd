@@ -85,3 +85,4 @@ var list_scenes = {
 }
 
 var current_scene = null
+var dialog_system = null

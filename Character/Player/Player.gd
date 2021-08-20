@@ -19,9 +19,11 @@ func _init():
 
 func _ready():
 	var _err = $Interaction.connect("body_entered", self, "_on_Interaction_body_entered")
+	_err = $Interaction.connect("body_exited", self, "_on_Interaction_body_exited")
+	$Camera.remote_path = get_parent().get_node("Camera").get_path()
+	$Dialog.remote_path = get_parent().get_node("Dialog").get_path()
 
 	var sprite_metadata = self.get_meta(Character_Globals.SPRITE_METADATA_KEY)
-	$Camera.remote_path = get_parent().get_node("Camera").get_path()
 	for sprite in sprite_metadata.keys():
 		var sprite_data = sprite_metadata[sprite]
 		get_node(sprite).texture = load(sprite_data["res"])
@@ -62,4 +64,14 @@ func _physics_process(delta):
 
 
 func _on_Interaction_body_entered(body: Node):
-	pass
+	if body == self:
+		return
+	var dialog_system = World_Globals.dialog_system
+	dialog_system.visible = true
+	World_Globals.dialog_system.get_node("Box/Text").text = body.to_string()
+
+
+func _on_Interaction_body_exited(body: Node):
+	var dialog_system = World_Globals.dialog_system
+	dialog_system.visible = false
+	World_Globals.dialog_system.get_node("Box/Text").text = ""

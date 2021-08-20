@@ -7,6 +7,7 @@ func _ready():
 	scenes["Welcome"]["instance"] = load(scenes["Welcome"]["res"]).instance()
 	self.add_child(scenes["Welcome"]["instance"], true)
 	World_Globals.current_scene = "Welcome"
+	World_Globals.dialog_system = $Dialog
 
 
 func _move_character_on_tilemap(
