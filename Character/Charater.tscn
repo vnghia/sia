@@ -1,8 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Character/AnimationPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Character/AnimationTree.gd" type="Script" id=2]
 [ext_resource path="res://Character/Adam/idle.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends KinematicBody2D
+
+
+func _ready():
+	pass
+"
 
 [sub_resource type="AnimationNodeStateMachine" id=1]
 
@@ -15,6 +23,7 @@ height = 11.9845
 [node name="Character" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 3
+script = SubResource( 4 )
 
 [node name="Run" type="Sprite" parent="."]
 
@@ -34,5 +43,4 @@ script = ExtResource( 2 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 44.2263 )
-rotation = 1.5708
 shape = SubResource( 3 )

@@ -1,6 +1,14 @@
 extends AnimationPlayer
 
 
+func _get_root_meta(key: String, default):
+	var root = get_node(self.root_node)
+	if root.has_meta(key):
+		return root.get_meta(key)
+	else:
+		return default
+
+
 func _add_frame_track(animation: Animation, node: Node, length: float, start: int, step: int) -> int:
 	var pos = animation.add_track(Animation.TYPE_VALUE)
 	animation.length = length
@@ -34,8 +42,11 @@ func _get_sibling_node(node_name: String) -> Node:
 
 
 func _ready():
-	for sprite_name in Character_Globals.SPRITE_METADATA.keys():
-		var sprite = Character_Globals.SPRITE_METADATA[sprite_name]
+	var sprite_metadata = self._get_root_meta(
+		Character_Globals.SPRITE_METADATA_KEY, Character_Globals.SPRITE_METADATA
+	)
+	for sprite_name in sprite_metadata.keys():
+		var sprite = sprite_metadata[sprite_name]
 		var sprite_node = self._get_sibling_node(sprite_name)
 		sprite_node.hframes = sprite["hframes"]
 		sprite_node.vframes = sprite["vframes"]

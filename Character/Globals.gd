@@ -16,7 +16,7 @@ const SPRITE_METADATA = {
 				"pos": Vector2(1, 0),
 				"show": ["Idle"],
 				"hide": ["Run"],
-				"other": {}
+				"other": {"Collision": {"rotation_degrees": 180}}
 			},
 			"Up":
 			{
@@ -26,7 +26,7 @@ const SPRITE_METADATA = {
 				"pos": Vector2(0, -1.1),
 				"show": ["Idle"],
 				"hide": ["Run"],
-				"other": {}
+				"other": {"Collision": {"rotation_degrees": 270}}
 			},
 			"Left":
 			{
@@ -36,7 +36,7 @@ const SPRITE_METADATA = {
 				"pos": Vector2(-1, 0),
 				"show": ["Idle"],
 				"hide": ["Run"],
-				"other": {}
+				"other": {"Collision": {"rotation_degrees": 0}}
 			},
 			"Down":
 			{
@@ -46,7 +46,7 @@ const SPRITE_METADATA = {
 				"pos": Vector2(0, 1.1),
 				"show": ["Idle"],
 				"hide": ["Run"],
-				"other": {}
+				"other": {"Collision": {"rotation_degrees": 90}}
 			},
 		},
 		"transitions": ["Run"],
@@ -67,7 +67,7 @@ const SPRITE_METADATA = {
 				"pos": Vector2(1, 0),
 				"show": ["Run"],
 				"hide": ["Idle"],
-				"other": {}
+				"other": {"Collision": {"rotation_degrees": 180}}
 			},
 			"Up":
 			{
@@ -77,7 +77,7 @@ const SPRITE_METADATA = {
 				"pos": Vector2(0, -1.1),
 				"show": ["Run"],
 				"hide": ["Idle"],
-				"other": {}
+				"other": {"Collision": {"rotation_degrees": 270}}
 			},
 			"Left":
 			{
@@ -87,7 +87,7 @@ const SPRITE_METADATA = {
 				"pos": Vector2(-1, 0),
 				"show": ["Run"],
 				"hide": ["Idle"],
-				"other": {}
+				"other": {"Collision": {"rotation_degrees": 0}}
 			},
 			"Down":
 			{
@@ -97,9 +97,11 @@ const SPRITE_METADATA = {
 				"pos": Vector2(0, 1.1),
 				"show": ["Run"],
 				"hide": ["Idle"],
-				"other": {}
+				"other": {"Collision": {"rotation_degrees": 90}}
 			},
 		},
 		"transitions": ["Idle"],
 	}
 }
+
+const SPRITE_METADATA_KEY = "sprite_metadata"

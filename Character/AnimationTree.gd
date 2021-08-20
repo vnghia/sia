@@ -1,17 +1,28 @@
 extends AnimationTree
 
 
+func _get_root_meta(key: String, default):
+	var root = self.get_parent()
+	if root.has_meta(key):
+		return root.get_meta(key)
+	else:
+		return default
+
+
 func _add_blend_point(space: AnimationNodeBlendSpace2D, animation: String, pos: Vector2) -> void:
 	var point = AnimationNodeAnimation.new()
 	point.animation = animation
 	space.add_blend_point(point, pos)
 
 
-func _enter_tree():
+func _ready():
+	var sprite_metadata = self._get_root_meta(
+		Character_Globals.SPRITE_METADATA_KEY, Character_Globals.SPRITE_METADATA
+	)
 	self.tree_root = AnimationNodeStateMachine.new()
 
-	for sprite_name in Character_Globals.SPRITE_METADATA.keys():
-		var sprite = Character_Globals.SPRITE_METADATA[sprite_name]
+	for sprite_name in sprite_metadata.keys():
+		var sprite = sprite_metadata[sprite_name]
 
 		var space_node = AnimationNodeBlendSpace2D.new()
 		space_node.blend_mode = AnimationNodeBlendSpace2D.BLEND_MODE_DISCRETE
@@ -24,17 +35,15 @@ func _enter_tree():
 
 		self.tree_root.add_node(sprite_name, space_node)
 
-	for sprite_name in Character_Globals.SPRITE_METADATA.keys():
-		var sprite = Character_Globals.SPRITE_METADATA[sprite_name]
+	for sprite_name in sprite_metadata.keys():
+		var sprite = sprite_metadata[sprite_name]
 		var transition = AnimationNodeStateMachineTransition.new()
 		for destination_name in sprite["transitions"]:
 			self.tree_root.add_transition(sprite_name, destination_name, transition)
 
-
-func _ready():
 	self.active = true
-	for sprite in Character_Globals.SPRITE_METADATA.keys():
-		var sprite_data = Character_Globals.SPRITE_METADATA[sprite]
+	for sprite in sprite_metadata.keys():
+		var sprite_data = sprite_metadata[sprite]
 		if sprite_data.get("start_node"):
 			self.tree_root.set_start_node(sprite)
 			self["parameters/{0}/blend_position".format([sprite])] = sprite_data["animation"]["Down"]["pos"]
