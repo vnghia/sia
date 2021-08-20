@@ -8,6 +8,8 @@ func _add_blend_point(space: AnimationNodeBlendSpace2D, animation: String, pos: 
 
 
 func _enter_tree():
+	self.tree_root = AnimationNodeStateMachine.new()
+
 	for sprite_name in Character_Globals.SPRITE_METADATA.keys():
 		var sprite = Character_Globals.SPRITE_METADATA[sprite_name]
 
