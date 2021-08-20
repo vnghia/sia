@@ -23,11 +23,6 @@ var list_scenes = {
 				Vector2(8, 6): {
 					"to": "Welcome",
 				}
-			},
-			"OfficeHall/Door": {
-				Vector2(8, 0): {
-					"to": "Office"
-				}
 			}
 		}
 	},
