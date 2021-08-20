@@ -12,6 +12,7 @@ smoothing_enabled = true
 editor_draw_drag_margin = true
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
+collision_layer = 2
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Character"]
 remote_path = NodePath("../../Camera")
