@@ -18,7 +18,7 @@ func _ready():
 	for sprite in Character_Globals.SPRITE_METADATA.keys():
 		var sprite_data = Character_Globals.SPRITE_METADATA[sprite]
 		get_node(sprite).texture = load(sprite_data["res"])
-	World_Globals.list_scenes["OfficeHall"]["door"]["OfficeHall/Door"] = {
+	World_Globals.list_scenes["OfficeHall"]["door"]["Door"] = {
 		Vector2(8, 0): {
 			"to": "Office"
 		}

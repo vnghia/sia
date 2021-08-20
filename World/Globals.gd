@@ -5,7 +5,7 @@ var list_scenes = {
 		"res": "res://World/Welcome/Welcome.tscn",
 		"instance": null,
 		"door": {
-			"Welcome/Entry": {
+			"Entry": {
 				Vector2(1, 0): {
 					"to": "OfficeHall",
 				},
@@ -19,7 +19,7 @@ var list_scenes = {
 		"res": "res://World/OfficeHall/OfficeHall.tscn",
 		"instance": null,
 		"door": {
-			"OfficeHall/Exit": {
+			"Exit": {
 				Vector2(8, 6): {
 					"to": "Welcome",
 				}
@@ -30,7 +30,7 @@ var list_scenes = {
 		"res": "res://World/Office/Office.tscn",
 		"instance": null,
 		"door": {
-			"Office/Exit": {
+			"Exit": {
 				Vector2(17, 30): {
 					"to": "OfficeHall",
 				},
@@ -44,7 +44,7 @@ var list_scenes = {
 		"res": "res://World/Cafeteria/Cafeteria.tscn",
 		"instance": null,
 		"door": {
-			"Cafeteria/Exit": {
+			"Exit": {
 				Vector2(5, 13): {
 					"to": "Welcome",
 				},
