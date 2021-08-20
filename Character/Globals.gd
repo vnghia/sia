@@ -103,5 +103,3 @@ const SPRITE_METADATA = {
 		"transitions": ["Idle"],
 	}
 }
-
-var CharacterNode = null

@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready():
-	var _err = Character_Globals.CharacterNode.connect("collided", self, "_on_Character_collided")
+	var _err = Player_Globals.player_node.connect("collided", self, "_on_Character_collided")
 	var scenes = World_Globals.list_scenes
 	scenes["Welcome"]["instance"] = load(scenes["Welcome"]["res"]).instance()
 	self.add_child(scenes["Welcome"]["instance"], true)
@@ -52,7 +52,7 @@ func _on_collided_change_scene(collision: KinematicCollision2D, direction: Vecto
 	self.remove_child(instance)
 	self.add_child(destination["instance"], true)
 	self._move_character_on_tilemap(
-		destination["instance"], destination_data, Character_Globals.CharacterNode
+		destination["instance"], destination_data, Player_Globals.player_node
 	)
 	World_Globals.current_scene = destination_name
 	return true

@@ -13,10 +13,11 @@ onready var animation_state = animation_tree.get("parameters/playback")
 
 
 func _init():
-	Character_Globals.CharacterNode = self
+	Player_Globals.player_node = self
 
 
 func _ready():
+	$Camera.remote_path = get_parent().get_node("Camera").get_path()
 	for sprite in Character_Globals.SPRITE_METADATA.keys():
 		var sprite_data = Character_Globals.SPRITE_METADATA[sprite]
 		get_node(sprite).texture = load(sprite_data["res"])
