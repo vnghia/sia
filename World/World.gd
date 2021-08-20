@@ -9,7 +9,9 @@ func _ready():
 	World_Globals.current_scene = "Welcome"
 
 
-func __move_character_on_tilemap(destination: Node, destination_data: Dictionary, character: KinematicBody2D):
+func _move_character_on_tilemap(
+	destination: Node, destination_data: Dictionary, character: KinematicBody2D
+):
 	var tile_map = destination.get_node(destination_data["map"])
 	var cell_size = tile_map.cell_size
 	var world_pos = tile_map.map_to_world(destination_data["pos"])
@@ -49,10 +51,8 @@ func _on_collided_change_scene(collision: KinematicCollision2D, direction: Vecto
 
 	self.remove_child(instance)
 	self.add_child(destination["instance"], true)
-	self.__move_character_on_tilemap(
-		destination["instance"],
-		destination_data,
-		Character_Globals.CharacterNode
+	self._move_character_on_tilemap(
+		destination["instance"], destination_data, Character_Globals.CharacterNode
 	)
 	World_Globals.current_scene = destination_name
 	return true

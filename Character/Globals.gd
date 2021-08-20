@@ -1,99 +1,103 @@
 extends Node
 
 const SPRITE_METADATA = {
-	"Idle": {
+	"Idle":
+	{
 		"res": "res://Character/Adam/idle.png",
 		"hframes": 24,
 		"vframes": 1,
-		"animation": {
-			"Right": {
+		"animation":
+		{
+			"Right":
+			{
 				"length": 0.6,
 				"start": 0,
 				"step": 6,
 				"pos": Vector2(1, 0),
 				"show": ["Idle"],
 				"hide": ["Run"],
-				"other": {
-				}
+				"other": {}
 			},
-			"Up": {
+			"Up":
+			{
 				"length": 0.6,
 				"start": 6,
 				"step": 6,
 				"pos": Vector2(0, -1.1),
 				"show": ["Idle"],
 				"hide": ["Run"],
-				"other": {
-				}
+				"other": {}
 			},
-			"Left": {
+			"Left":
+			{
 				"length": 0.6,
 				"start": 12,
 				"step": 6,
 				"pos": Vector2(-1, 0),
 				"show": ["Idle"],
 				"hide": ["Run"],
-				"other": {
-				}
+				"other": {}
 			},
-			"Down": {
+			"Down":
+			{
 				"length": 0.6,
 				"start": 18,
 				"step": 6,
 				"pos": Vector2(0, 1.1),
 				"show": ["Idle"],
 				"hide": ["Run"],
-				"other": {
-				}
+				"other": {}
 			},
 		},
 		"transitions": ["Run"],
 		"start_node": true
 	},
-	"Run": {
+	"Run":
+	{
 		"res": "res://Character/Adam/run.png",
 		"hframes": 24,
 		"vframes": 1,
-		"animation": {
-			"Right": {
+		"animation":
+		{
+			"Right":
+			{
 				"length": 0.6,
 				"start": 0,
 				"step": 6,
 				"pos": Vector2(1, 0),
 				"show": ["Run"],
 				"hide": ["Idle"],
-				"other": {
-				}
+				"other": {}
 			},
-			"Up": {
+			"Up":
+			{
 				"length": 0.6,
 				"start": 6,
 				"step": 6,
 				"pos": Vector2(0, -1.1),
 				"show": ["Run"],
 				"hide": ["Idle"],
-				"other": {
-				}
+				"other": {}
 			},
-			"Left": {
+			"Left":
+			{
 				"length": 0.6,
 				"start": 12,
 				"step": 6,
 				"pos": Vector2(-1, 0),
 				"show": ["Run"],
 				"hide": ["Idle"],
-				"other": {
-				}
+				"other": {}
 			},
-			"Down": {
+			"Down":
+			{
 				"length": 0.6,
 				"start": 18,
 				"step": 6,
 				"pos": Vector2(0, 1.1),
 				"show": ["Run"],
 				"hide": ["Idle"],
-				"other": {
-				}
+				"other": {}
 			},
 		},
 		"transitions": ["Idle"],

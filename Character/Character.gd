@@ -11,19 +11,17 @@ signal collided(collision, direction)
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 
+
 func _init():
 	Character_Globals.CharacterNode = self
+
 
 func _ready():
 	for sprite in Character_Globals.SPRITE_METADATA.keys():
 		var sprite_data = Character_Globals.SPRITE_METADATA[sprite]
 		get_node(sprite).texture = load(sprite_data["res"])
 	World_Globals.list_scenes["OfficeHall"]["door"]["Door"] = {
-		Vector2(8, 0): {
-			"to": "Office",
-			"map": "Exit",
-			"pos": Vector2(18, 28)
-		}
+		Vector2(8, 0): {"to": "Office", "map": "Exit", "pos": Vector2(18, 28)}
 	}
 	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(17, 30)]["map"] = "Door"
 	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(17, 30)]["pos"] = Vector2(8, 1)
@@ -31,6 +29,7 @@ func _ready():
 	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(18, 30)]["map"] = "Door"
 	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(18, 30)]["pos"] = Vector2(8, 1)
 	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(18, 30)]["center_x"] = true
+
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -47,7 +46,7 @@ func _physics_process(delta):
 	else:
 		animation_state.travel(sprites[0])
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
+
 	velocity = move_and_slide(velocity)
 
 	for i in self.get_slide_count():

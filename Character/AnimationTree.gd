@@ -1,9 +1,11 @@
 extends AnimationTree
 
-func __add_blend_point(space: AnimationNodeBlendSpace2D, animation: String, pos: Vector2) -> void:
+
+func _add_blend_point(space: AnimationNodeBlendSpace2D, animation: String, pos: Vector2) -> void:
 	var point = AnimationNodeAnimation.new()
 	point.animation = animation
 	space.add_blend_point(point, pos)
+
 
 func _enter_tree():
 	for sprite_name in Character_Globals.SPRITE_METADATA.keys():
@@ -16,15 +18,16 @@ func _enter_tree():
 
 		for movement_direction in sprite["animation"].keys():
 			var movement = sprite["animation"][movement_direction]
-			self.__add_blend_point(space_node, sprite_name + movement_direction, movement["pos"])
+			self._add_blend_point(space_node, sprite_name + movement_direction, movement["pos"])
 
 		self.tree_root.add_node(sprite_name, space_node)
-	
+
 	for sprite_name in Character_Globals.SPRITE_METADATA.keys():
 		var sprite = Character_Globals.SPRITE_METADATA[sprite_name]
 		var transition = AnimationNodeStateMachineTransition.new()
 		for destination_name in sprite["transitions"]:
 			self.tree_root.add_transition(sprite_name, destination_name, transition)
+
 
 func _ready():
 	self.active = true
