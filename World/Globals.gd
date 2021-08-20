@@ -9,6 +9,9 @@ var list_scenes = {
 				Vector2(1, 0): {
 					"to": "OfficeHall",
 				},
+				Vector2(3, 0): {
+					"to": "Cafeteria",
+				}
 			}
 		}
 	},
@@ -38,6 +41,20 @@ var list_scenes = {
 				},
 				Vector2(18, 30): {
 					"to": "OfficeHall",
+				},
+			}
+		}
+	},
+	"Cafeteria": {
+		"res": "res://World/Cafeteria/Cafeteria.tscn",
+		"instance": null,
+		"door": {
+			"Cafeteria/Exit": {
+				Vector2(5, 13): {
+					"to": "Welcome",
+				},
+				Vector2(6, 13): {
+					"to": "Welcome",
 				},
 			}
 		}
