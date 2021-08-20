@@ -8,10 +8,22 @@ func _ready():
 	self.add_child(scenes["Welcome"]["instance"], true)
 	World_Globals.current_scene = "Welcome"
 
+
+func __move_character_on_tilemap(destination: Node, destination_data: Dictionary, character: KinematicBody2D):
+	var tile_map = destination.get_node(destination_data["map"])
+	var cell_size = tile_map.cell_size
+	var world_pos = tile_map.map_to_world(destination_data["pos"])
+	if destination_data.get("center_x"):
+		world_pos.x += cell_size.x / 2
+	if destination_data.get("center_y"):
+		world_pos.y += cell_size.y / 2
+	character.position = world_pos
+
+
 func _on_collided_change_scene(collision: KinematicCollision2D, direction: Vector2):
 	if direction == Vector2.ZERO:
 		return false
-		
+
 	var scenes = World_Globals.list_scenes
 	var scene = scenes[World_Globals.current_scene]
 	var instance = scene["instance"]
@@ -37,8 +49,14 @@ func _on_collided_change_scene(collision: KinematicCollision2D, direction: Vecto
 
 	self.remove_child(instance)
 	self.add_child(destination["instance"], true)
+	self.__move_character_on_tilemap(
+		destination["instance"],
+		destination_data,
+		Character_Globals.CharacterNode
+	)
 	World_Globals.current_scene = destination_name
 	return true
+
 
 func _on_Character_collided(collision: KinematicCollision2D, direction: Vector2):
 	var _changed = self._on_collided_change_scene(collision, direction)

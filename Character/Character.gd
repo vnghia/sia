@@ -20,9 +20,17 @@ func _ready():
 		get_node(sprite).texture = load(sprite_data["res"])
 	World_Globals.list_scenes["OfficeHall"]["door"]["Door"] = {
 		Vector2(8, 0): {
-			"to": "Office"
+			"to": "Office",
+			"map": "Exit",
+			"pos": Vector2(18, 28)
 		}
 	}
+	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(17, 30)]["map"] = "Door"
+	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(17, 30)]["pos"] = Vector2(8, 1)
+	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(17, 30)]["center_x"] = true
+	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(18, 30)]["map"] = "Door"
+	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(18, 30)]["pos"] = Vector2(8, 1)
+	World_Globals.list_scenes["Office"]["door"]["Exit"][Vector2(18, 30)]["center_x"] = true
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
