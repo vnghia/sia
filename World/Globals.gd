@@ -86,3 +86,5 @@ var list_scenes = {
 
 var current_scene = null
 var dialog_system = null
+
+signal change_listener(node)
