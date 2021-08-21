@@ -3,7 +3,6 @@ extends Node
 const SPRITE_METADATA = {
 	"Idle":
 	{
-		"res": "res://Character/Adam/idle.png",
 		"hframes": 24,
 		"vframes": 1,
 		"animation":
@@ -54,7 +53,6 @@ const SPRITE_METADATA = {
 	},
 	"Run":
 	{
-		"res": "res://Character/Adam/run.png",
 		"hframes": 24,
 		"vframes": 1,
 		"animation":
@@ -105,3 +103,11 @@ const SPRITE_METADATA = {
 }
 
 const SPRITE_METADATA_KEY = "sprite_metadata"
+
+
+func new_npc(idle: Resource, run: Resource, pos: Vector2):
+	var npc = preload("res://Character/NPC/NPC.tscn").instance()
+	npc.get_node("Idle").texture = idle
+	npc.get_node("Run").texture = run
+	npc.position = pos
+	return npc

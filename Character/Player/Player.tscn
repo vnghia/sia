@@ -11,9 +11,6 @@ extents = Vector2( 20.1593, 12.8801 )
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Idle" parent="." index="1"]
-texture = null
-
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource( 1 )
 

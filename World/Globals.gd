@@ -1,5 +1,7 @@
 extends Node
 
+var rng = RandomNumberGenerator.new()
+
 var list_scenes = {
 	"Welcome":
 	{
@@ -89,3 +91,20 @@ var dialog_system = null
 
 # warning-ignore:unused_signal
 signal change_listener(node)
+
+
+func map_to_world_center(tile_map: TileMap, pos: Vector2, center_x, center_y):
+	var cell_size = tile_map.cell_size
+	var world_pos = tile_map.map_to_world(pos)
+	if center_x:
+		world_pos.x += cell_size.x / 2
+	if center_y:
+		world_pos.y -= cell_size.y / 2
+	return world_pos
+
+
+func get_random_world_position_on_tilemap(tile_map: TileMap, tile_set_idx: int, center_x, center_y):
+	var cells = tile_map.get_used_cells_by_id(tile_set_idx)
+	var cell_idx = rng.randi_range(0, cells.size() - 1)
+	var pos = cells[cell_idx]
+	return self.map_to_world_center(tile_map, pos, center_x, center_y)

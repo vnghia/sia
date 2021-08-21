@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _ready():
+	World_Globals.rng.randomize()
 	var _err = Player_Globals.player_node.connect("collided", self, "_on_Character_collided")
 	var scenes = World_Globals.list_scenes
 	scenes["Welcome"]["instance"] = load(scenes["Welcome"]["res"]).instance()
@@ -14,12 +15,12 @@ func _move_character_on_tilemap(
 	destination: Node, destination_data: Dictionary, character: KinematicBody2D
 ):
 	var tile_map = destination.get_node(destination_data["map"])
-	var cell_size = tile_map.cell_size
-	var world_pos = tile_map.map_to_world(destination_data["pos"])
-	if destination_data.get("center_x"):
-		world_pos.x += cell_size.x / 2
-	if destination_data.get("center_y"):
-		world_pos.y += cell_size.y / 2
+	var world_pos = World_Globals.map_to_world_center(
+		tile_map,
+		destination_data["pos"],
+		destination_data.get("center_x"),
+		destination_data.get("center_y")
+	)
 	character.position = world_pos
 
 

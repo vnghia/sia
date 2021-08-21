@@ -5,7 +5,7 @@ var player_node = null
 const SPRITE_METADATA = {
 	"Idle":
 	{
-		"res": "res://Character/Adam/idle.png",
+		"res": "res://Character/Player/idle.png",
 		"hframes": 24,
 		"vframes": 1,
 		"animation":
@@ -60,7 +60,7 @@ const SPRITE_METADATA = {
 	},
 	"Run":
 	{
-		"res": "res://Character/Adam/run.png",
+		"res": "res://Character/Player/run.png",
 		"hframes": 24,
 		"vframes": 1,
 		"animation":
