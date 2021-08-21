@@ -16,13 +16,13 @@ onready var animation_state = animation_tree.get("parameters/playback")
 func _init():
 	self.set_meta("name", "Player")
 	Player_Globals.player_node = self
-	World_Globals.connect("change_listener", self, "_on_change_listener")
 	self.set_meta(Character_Globals.SPRITE_METADATA_KEY, Player_Globals.SPRITE_METADATA)
 
 
 func _ready():
 	var _err = $Interaction.connect("body_entered", self, "_on_Interaction_body_entered")
 	_err = $Interaction.connect("body_exited", self, "_on_Interaction_body_exited")
+	_err = World_Globals.connect("change_listener", self, "_on_change_listener")
 	$Camera.remote_path = get_parent().get_node("Camera").get_path()
 	$Dialog.remote_path = get_parent().get_node("Dialog").get_path()
 

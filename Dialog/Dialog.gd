@@ -9,7 +9,7 @@ var should_close = false
 
 func _ready():
 	self.visible = false
-	World_Globals.connect("change_listener", self, "_on_change_listener")
+	var _err = World_Globals.connect("change_listener", self, "_on_change_listener")
 
 
 func _unhandled_input(event):
