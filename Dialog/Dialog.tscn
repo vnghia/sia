@@ -19,13 +19,13 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 2 )
 
-[node name="Dialog" type="Node2D"]
+[node name="Dialog" type="CanvasLayer"]
 
 [node name="Box" type="NinePatchRect" parent="."]
-margin_left = -450.0
-margin_top = 100.0
-margin_right = 450.0
-margin_bottom = 250.0
+margin_left = 30.0
+margin_top = 370.0
+margin_right = 930.0
+margin_bottom = 520.0
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 48, 48 )
 patch_margin_left = 10

@@ -23,8 +23,8 @@ func _ready():
 	var _err = $Interaction.connect("body_entered", self, "_on_Interaction_body_entered")
 	_err = $Interaction.connect("body_exited", self, "_on_Interaction_body_exited")
 	_err = World_Globals.connect("change_listener", self, "_on_change_listener")
-	$Camera.remote_path = get_parent().get_node("Camera").get_path()
-	$Dialog.remote_path = get_parent().get_node("Dialog").get_path()
+	World_Globals.emit_signal("change_listener", self)
+	$Camera.remote_path = "/root/Root/Camera"
 
 	var sprite_metadata = self.get_meta(Character_Globals.SPRITE_METADATA_KEY)
 	for sprite in sprite_metadata.keys():

@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 const SCROLL_SPEED = 150
 
@@ -8,7 +8,6 @@ var should_close = false
 
 
 func _ready():
-	self.visible = false
 	var _err = World_Globals.connect("change_listener", self, "_on_change_listener")
 
 
@@ -43,10 +42,10 @@ func print_dialog(username: String, speech: String):
 
 func _on_change_listener(node: Node):
 	if node != self:
-		self.visible = false
+		self.get_node("Box").visible = false
 		self.set_process(false)
 		self.set_process_unhandled_input(false)
 	else:
-		self.visible = true
+		self.get_node("Box").visible = true
 		self.set_process(true)
 		self.set_process_unhandled_input(true)
