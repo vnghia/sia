@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Character/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Dialog/Dialog.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Dialog/Font/CircularStd-BoldItalic.otf" type="DynamicFontData" id=8]
 [ext_resource path="res://Dialog/Font/CircularStd-Book.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://Dialog/Dialog.png" type="Texture" id=10]
+[ext_resource path="res://UI/Light.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 8 )
@@ -157,3 +158,8 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="MyEnergy" type="Sprite" parent="HUD"]
+position = Vector2( 30, 44.2263 )
+scale = Vector2( 0.373684, 0.373684 )
+texture = ExtResource( 11 )
