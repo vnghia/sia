@@ -54,29 +54,16 @@ func _get_input_vector():
 	return input_vector.normalized()
 
 
-func move(input_vector: Vector2, delta: float):
-	var sprite_metadata = self.get_meta(Character_Globals.SPRITE_METADATA_KEY)
-	var sprites = sprite_metadata.keys()
-	if input_vector != Vector2.ZERO:
-		for sprite in sprites:
-			animation_tree.set("parameters/{0}/blend_position".format([sprite]), input_vector)
-		animation_state.travel(sprites[1])
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-	else:
-		animation_state.travel(sprites[0])
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-
-	velocity = move_and_slide(velocity)
+func _physics_process(delta):
+	var input_vector = self._get_input_vector()
+	velocity = Character_Globals.move_and_anim(
+		self, "move_and_slide", input_vector, velocity, delta, MAX_SPEED, ACCELERATION, FRICTION
+	)
 
 	for i in self.get_slide_count():
 		var collision = self.get_slide_collision(i)
 		if collision:
 			self.emit_signal("collided", collision, input_vector)
-
-
-func _physics_process(delta):
-	var input_vector = self._get_input_vector()
-	self.move(input_vector, delta)
 
 
 func _on_Interaction_body_entered(body: Node):
