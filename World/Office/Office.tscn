@@ -368,7 +368,7 @@ points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
 } ]
 0/z_index = 0
 
-[node name="Office" type="Node2D"]
+[node name="Office" type="YSort"]
 script = ExtResource( 3 )
 
 [node name="Cell" type="TileMap" parent="."]

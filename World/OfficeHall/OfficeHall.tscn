@@ -319,7 +319,7 @@ points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
 } ]
 0/z_index = 0
 
-[node name="OfficeHall" type="Node2D"]
+[node name="OfficeHall" type="YSort"]
 script = ExtResource( 3 )
 
 [node name="WallFloor" type="TileMap" parent="."]
