@@ -5,4 +5,4 @@
 [node name="UI" type="Sprite"]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 384, 0, 48, 96 )
+region_rect = Rect2( 336, 384, 48, 96 )

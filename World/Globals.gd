@@ -1,6 +1,7 @@
 extends Node
 
 var rng = RandomNumberGenerator.new()
+var world_node = null
 
 var list_scenes = {
 	"Welcome":
@@ -90,7 +91,7 @@ var current_scene = null
 var dialog_system = null
 
 # warning-ignore:unused_signal
-signal change_listener(node)
+signal change_listener(old, new)
 
 
 func map_to_world_center(tile_map: TileMap, pos: Vector2, center_x, center_y):

@@ -23,7 +23,7 @@ func _ready():
 	var _err = $Interaction.connect("body_entered", self, "_on_Interaction_body_entered")
 	_err = $Interaction.connect("body_exited", self, "_on_Interaction_body_exited")
 	_err = World_Globals.connect("change_listener", self, "_on_change_listener")
-	World_Globals.emit_signal("change_listener", self)
+	World_Globals.emit_signal("change_listener", null, self)
 	$Camera.remote_path = "/root/Root/Camera"
 
 	var sprite_metadata = self.get_meta(Character_Globals.SPRITE_METADATA_KEY)
@@ -76,8 +76,8 @@ func _on_Interaction_body_exited(_body: Node):
 	interactable_node = null
 
 
-func _on_change_listener(node: Node):
-	if node != self:
+func _on_change_listener(_old: Node, new: Node):
+	if new != self:
 		self.set_process(false)
 		self.set_physics_process(false)
 		self.set_process_unhandled_input(false)

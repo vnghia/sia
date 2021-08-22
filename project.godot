@@ -18,6 +18,7 @@ run/main_scene="res://World/World.tscn"
 Character_Globals="*res://Character/Globals.gd"
 World_Globals="*res://World/Globals.gd"
 Player_Globals="*res://Character/Player/Globals.gd"
+MentalBot_Globals="*res://Character/MentalBot/Globals.gd"
 
 [display]
 

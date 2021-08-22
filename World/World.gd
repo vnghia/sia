@@ -3,6 +3,7 @@ extends Node2D
 
 func _ready():
 	World_Globals.rng.randomize()
+	World_Globals.world_node = self
 	var _err = Player_Globals.player_node.connect("collided", self, "_on_Character_collided")
 	var scenes = World_Globals.list_scenes
 	scenes["Welcome"]["instance"] = load(scenes["Welcome"]["res"]).instance()
@@ -61,4 +62,6 @@ func _on_collided_change_scene(collision: KinematicCollision2D, direction: Vecto
 
 
 func _on_Character_collided(collision: KinematicCollision2D, direction: Vector2):
-	var _changed = self._on_collided_change_scene(collision, direction)
+	var changed = self._on_collided_change_scene(collision, direction)
+	if changed and self.has_node("MentalBot"):
+		self.remove_child(MentalBot_Globals.mentalbot_node)
