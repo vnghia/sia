@@ -45,6 +45,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		if interactable_node and interactable_node.has_method("interact"):
 			interactable_node.interact()
+	elif event.is_action_pressed("ui_select"):
+		get_node("/root/Root/HUD/Menu").visible = ! get_node("/root/Root/HUD/Menu").visible
 
 
 func _get_input_vector():

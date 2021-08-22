@@ -1,10 +1,29 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Character/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Dialog/Dialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/World.gd" type="Script" id=3]
 [ext_resource path="res://Dialog/Dialog.gd" type="Script" id=4]
 [ext_resource path="res://Character/MentalBot/MentalBot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Dialog/Font/CircularStd-Bold.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Dialog/Font/CircularStd-BookItalic.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://Dialog/Font/CircularStd-BoldItalic.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://Dialog/Font/CircularStd-Book.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://Dialog/Dialog.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 9 )
 
 [node name="Root" type="Node"]
 
@@ -25,3 +44,116 @@ script = ExtResource( 3 )
 
 [node name="Promo" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="NinePatchRect" parent="HUD"]
+visible = false
+margin_left = 730.0
+margin_top = 20.0
+margin_right = 930.0
+margin_bottom = 350.0
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 48, 48 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chat" type="RichTextLabel" parent="HUD/Menu"]
+margin_left = 25.0
+margin_top = 15.0
+margin_right = 175.0
+margin_bottom = 75.0
+custom_fonts/bold_italics_font = SubResource( 1 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/bold_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u]My Chat[/u][/center]"
+text = "My Chat"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Chat2" type="RichTextLabel" parent="HUD/Menu"]
+margin_left = 25.0
+margin_top = 75.0
+margin_right = 175.0
+margin_bottom = 135.0
+custom_fonts/bold_italics_font = SubResource( 1 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/bold_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u]My Mail[/u][/center]"
+text = "My Mail"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Chat3" type="RichTextLabel" parent="HUD/Menu"]
+margin_left = 25.0
+margin_top = 135.0
+margin_right = 175.0
+margin_bottom = 195.0
+custom_fonts/bold_italics_font = SubResource( 1 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/bold_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u]My Calendar[/u][/center]"
+text = "My Calendar"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Chat4" type="RichTextLabel" parent="HUD/Menu"]
+margin_left = 25.0
+margin_top = 195.0
+margin_right = 175.0
+margin_bottom = 255.0
+custom_fonts/bold_italics_font = SubResource( 1 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/bold_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u]My Task[/u][/center]"
+text = "My Task"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Chat5" type="RichTextLabel" parent="HUD/Menu"]
+margin_left = 25.0
+margin_top = 255.0
+margin_right = 175.0
+margin_bottom = 310.0
+custom_fonts/bold_italics_font = SubResource( 1 )
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/bold_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u]My Health[/u][/center]"
+text = "My Health"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
