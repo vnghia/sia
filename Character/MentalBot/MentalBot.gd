@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var current_state = "begin"
+var reminded = false
 onready var promo = get_node("/root/Root/Promo")
 
 
@@ -32,6 +33,8 @@ func interact():
 
 
 func _on_promo_timeout():
+	if reminded:
+		return
 	promo.stop()
 	$UI.switch("clock")
 	World_Globals.world_node.add_child(self)
@@ -42,6 +45,7 @@ func _on_promo_timeout():
 	World_Globals.dialog_system.print_dialog(
 		self.get_meta("name"), "Time for a short break !", Player_Globals.player_node
 	)
+	reminded = true
 
 
 func _on_change_listener(_old: Node, new: Node):
